@@ -1,0 +1,247 @@
+/* src/components/Dashboard.css */
+/* ================== TOKENS (bordes, tamaños, tipografía) ================== */
+:root{
+  /* Tipografía */
+  --font-sans: "Poppins", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --fs-xs: clamp(11px, .78vw, 12px);
+  --fs-sm: clamp(12px, .85vw, 13.5px);
+  --fs-md: clamp(13.5px, .95vw, 15px);
+  --fs-lg: clamp(16px, 1.2vw, 18px);
+  --fs-xl: clamp(18px, 1.4vw, 22px);
+  --fw-regular: 500;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Bordes */
+  --radius-xs: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --border-soft: 1px solid rgba(255,255,255,0.28);
+  --border-strong: 1.5px solid rgba(255,255,255,0.45);
+
+  /* Colores base */
+  --ink-strong: #0b2a5e;
+  --ink-on-dark: rgba(255,255,255,0.96);
+  --glass-bg: rgba(255,255,255,0.12);
+  --glass-card: rgba(255,255,255,0.18);
+  --glass-card-strong: rgba(255,255,255,0.22);
+  --table-head: rgba(255,255,255,0.98);
+  --table-row: rgba(255,255,255,0.88);
+  --table-row-alt: rgba(255,255,255,0.82);
+
+  /* Sombra */
+  --shadow-md: 0 10px 22px rgba(0,0,0,.20);
+  --shadow-lg: 0 16px 36px rgba(0,0,0,.28);
+  --shadow-xl: 0 22px 60px rgba(0,0,0,.35);
+
+  /* Espaciado */
+  --sp-1: 6px;  --sp-2: 10px; --sp-3: 12px; --sp-4: 14px;
+  --sp-5: 16px; --sp-6: 18px; --sp-7: 22px; --sp-8: 28px;
+}
+
+html, body { font-family: var(--font-sans); font-size: var(--fs-md); }
+
+/* ====== Layout/base del Dashboard ====== */
+.dashboard{
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6f7ae6 0%, #6a5fd1 100%);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.dashboard-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px auto 18px;
+  width: min(1100px, 96%);
+}
+
+.user-info h2{
+  margin: 0 0 4px 0;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-extrabold);
+  color: #0b2a5e;
+}
+.user-info p{
+  margin: 0;
+  color: rgba(255,255,255,.95);
+  font-size: var(--fs-sm);
+}
+
+/* Contenido principal centrado */
+.dashboard-main{
+  width: min(1100px, 96%);
+  margin: 0 auto 40px;
+}
+
+/* ================== HEADER: acciones a la derecha ================== */
+.header-actions{
+  display:flex; align-items:center; gap: var(--sp-3);
+  margin-left:auto;
+  font-size: var(--fs-sm);
+}
+
+/* Tabs con glass dentro del header */
+.dashboard-tabs.in-header{
+  display:inline-flex; gap: 8px;
+  background: var(--glass-bg);
+  border: var(--border-strong);
+  backdrop-filter: blur(10px);
+  padding: var(--sp-2);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard-tabs.in-header button{
+  border:none; padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  cursor:pointer; color: var(--ink-on-dark);
+  background: transparent;
+  transition: background .22s ease, transform .08s ease, box-shadow .22s ease;
+}
+.dashboard-tabs.in-header button:hover{
+  background: rgba(255,255,255,0.20);
+  transform: translateY(-1px);
+}
+.dashboard-tabs.in-header button.active{
+  color: var(--ink-strong);
+  background: linear-gradient(135deg, #ffffff 0%, #e8f1ff 100%);
+  box-shadow: 0 6px 16px rgba(0,0,0,.2);
+}
+
+/* En móvil, que el header no se rompa */
+@media (max-width: 768px){
+  .header-actions{ width:100%; justify-content:center; flex-wrap:wrap; gap: var(--sp-2); }
+}
+
+/* ================== TARJETA / CONTENEDOR USUARIOS ================== */
+.users-wrap{
+  width: min(980px, 92%);
+  margin: 20px auto 40px;
+}
+
+.users-card{
+  background: var(--glass-card);
+  border: var(--border-strong);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--sp-6);
+}
+
+.users-header{
+  display:flex; align-items:center; justify-content:space-between;
+  color:#fff; margin: 6px 0 12px;
+}
+
+.users-title{
+  margin:0; font-weight: var(--fw-extrabold);
+  font-size: var(--fs-xl);
+  text-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+
+/* ================== BOTONES ================== */
+.btn{
+  border: var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 11px 16px;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  cursor:pointer;
+  transition: transform .08s ease, filter .2s ease, box-shadow .2s ease, border-color .2s;
+  backdrop-filter: blur(4px);
+}
+.btn:active{ transform: translateY(0); }
+
+.btn-primary{
+  color: var(--ink-strong);
+  background: linear-gradient(135deg, #ffffff 0%, #e8f1ff 100%);
+  border-color: rgba(11,42,94,.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,.22);
+}
+.btn-primary:hover{ filter: brightness(.985); transform: translateY(-1px); }
+
+.btn-ghost{
+  background: var(--glass-card-strong);
+  color:#fff;
+}
+.btn-ghost:hover{ background: rgba(255,255,255,0.28); }
+
+.btn-danger{
+  background: rgba(231,76,60,0.92);
+  color:#fff; border-color: rgba(231,76,60,.35);
+}
+.btn-danger:hover{ background: rgba(231,76,60,1); }
+
+/* ================== TABLA ================== */
+.table{
+  width:100%;
+  border-collapse: separate; border-spacing:0;
+  overflow:hidden;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+}
+.table thead th{
+  text-align:left; padding: var(--sp-5);
+  font-weight: var(--fw-extrabold);
+  color: var(--ink-strong);
+  background: var(--table-head);
+  position: sticky; top:0; z-index:1;
+  border-bottom: 1px solid rgba(15,23,42,.08);
+}
+.table tbody td{
+  padding: var(--sp-5);
+  color: var(--ink-strong);
+  background: var(--table-row);
+  border-top: 1px solid rgba(255,255,255,0.65);
+}
+.table tbody tr:nth-child(odd) td{ background: var(--table-row-alt); }
+.table tbody tr:hover td{ background: rgba(255,255,255,0.94); }
+
+/* Acciones alineadas */
+.row-actions{ display:flex; gap: var(--sp-3); justify-content:flex-start; }
+
+/* ================== MODAL (para UserForm si lo usas) ================== */
+.backdrop{
+  position:fixed; inset:0;
+  background: rgba(2,8,23,0.45);
+  display:grid; place-items:center; z-index:1000;
+}
+.modal{
+  width: 520px; max-width: 92vw;
+  background: rgba(255,255,255,0.97);
+  border-radius: var(--radius-lg);
+  border: var(--border-strong);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-xl);
+  padding: var(--sp-7);
+  font-size: var(--fs-md);
+}
+.form{ display:grid; gap: var(--sp-4); }
+.form .input{
+  border: 1.25px solid rgba(15,23,42,.14);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  outline:none; background:#fff; font-size: var(--fs-md);
+}
+.form .input:focus{
+  border-color:#60a5fa;
+  box-shadow: 0 0 0 3px rgba(96,165,250,.25);
+}
+.form-actions{ display:flex; gap: var(--sp-3); justify-content:flex-end; }
+/* Botón Editar con texto verde */
+.btn-edit{
+  color: #16a34a !important;           /* verde */
+}
+.btn-edit:hover{
+  background: rgba(22, 163, 74, 0.12); /* verde muy leve al hover */
+}
+.btn-edit:focus{
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25);
+}

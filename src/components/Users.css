@@ -1,0 +1,91 @@
+/* --- Overlay del modal --- */
+.backdrop {
+  position: fixed; inset: 0;
+  background: rgba(2, 8, 23, 0.45); /* azul oscuro translúcido */
+  display: grid; place-items: center;
+  z-index: 1000;
+}
+
+/* --- Caja del modal con glass --- */
+.modal.glass {
+  width: 420px; max-width: 92vw;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+/* Header del modal */
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0b2a5e; /* a juego con tu tema */
+  text-shadow: 0 1px 2px rgba(0,0,0,.08);
+}
+.icon-btn {
+  border: 0; background: transparent; font-size: 20px;
+  line-height: 1; cursor: pointer; color: #334155;
+  border-radius: 8px; padding: 2px 6px;
+}
+.icon-btn:hover { background: rgba(0,0,0,.06); }
+
+/* Form */
+.form {
+  display: grid; gap: 12px;
+}
+.label {
+  display: grid; gap: 6px;
+  font-weight: 700;
+  color: #0b2a5e;
+}
+.input {
+  border: 1px solid rgba(15, 23, 42, .12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  background: #fff;
+  font-size: 0.95rem;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.input:focus {
+  border-color: #60a5fa; /* azul claro */
+  box-shadow: 0 0 0 3px rgba(96,165,250,.25);
+}
+
+/* Botones */
+.btn {
+  border: 0; border-radius: 12px; padding: 10px 16px;
+  font-weight: 800; cursor: pointer;
+  transition: transform .1s ease, filter .2s ease, box-shadow .2s ease;
+}
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  color: #0b2a5e;
+  background: linear-gradient(135deg, #ffffff 0%, #e8f1ff 100%);
+  box-shadow: 0 10px 24px rgba(11,42,94,.25);
+}
+.btn-primary:hover { filter: brightness(0.98); transform: translateY(-1px); }
+
+.btn-outline {
+  color: #0b2a5e;
+  background: transparent;
+  border: 1px solid rgba(11,42,94,.25);
+}
+.btn-outline:hover { background: rgba(255,255,255,.75); }
+
+.form-actions {
+  margin-top: 6px;
+  display: flex; gap: 10px; justify-content: flex-end;
+}
+
+/* (Opcional) Ajuste de tipografía del título grande fuera del modal */
+.users-title { color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,.25); }
