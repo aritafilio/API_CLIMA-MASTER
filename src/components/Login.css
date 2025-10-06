@@ -1,0 +1,58 @@
+/* RUTA: src/components/Login.css */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio entre los elementos */
+  max-width: 400px;
+  margin: 2rem auto; /* Centra el formulario */
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.login-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Efecto de levantar el botón */
+}
+
+.login-form button:active {
+  transform: translateY(0); /* Efecto de presionar el botón */
+}
