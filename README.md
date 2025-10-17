@@ -168,3 +168,19 @@ Las pruebas automatizadas con Jest y Supertest validan la **confiabilidad, segur
 
 ---
 
+## ✨ Funcionalidades
+
+**Manejo de errores** para problemas de conexión o datos inválidos.  
+ 
+---
+
+## 🔏 Privacidad y Cumplimiento (GDPR / CCPA-CPRA)
+
+- **Consentimiento explícito**: Banner/modal en la app para aceptar el tratamiento esencial y dar opt-in a analítica/marketing.  
+- **Portabilidad de datos**: `GET /privacy/export` descarga tus datos en JSON portable.  
+- **Derecho al olvido**: `DELETE /privacy/delete` elimina tu cuenta y datos personales.  
+- **Preferencias (opt-in/out)**: `POST /privacy/consent` y `PATCH /privacy/preferences`.  
+- **Política de privacidad**: `GET /privacy/policy` (versionada por `PRIVACY_VERSION` en `.env`).  
+
+> Consulta **PRIVACY.md** para detalles y fundamentos legales.
+
