@@ -11,7 +11,7 @@ const request = require('supertest');
 
 // --- Mocks ---
 // Mock del middleware de auth: inyecta identidad en req.auth
-jest.mock('../api/authMiddleware', () => ({
+jest.mock('../authMiddleware', () => ({
   checkJwt: (req, res, next) => {
     req.auth = { email: 'priv.test@example.com', sub: 'priv.test@example.com' };
     next();
@@ -21,7 +21,7 @@ jest.mock('../api/authMiddleware', () => ({
 }));
 
 // Mock de cifrado: reversible simple para pruebas
-jest.mock('../api/encryptionUtils', () => {
+jest.mock('../encryptionUtils', () => {
   function enc(s, key) { return Buffer.from(`${s}::${key}`).toString('base64'); }
   function dec(t, key) {
     const raw = Buffer.from(t, 'base64').toString('utf8');
@@ -31,7 +31,7 @@ jest.mock('../api/encryptionUtils', () => {
 });
 
 // Carga la app (usa el export de server.js)
-const app = require('../api/server');
+const app = require('../server');
 
 describe('Privacidad y Cumplimiento', () => {
   test('GET /privacy/policy devuelve versión y resumen', async () => {

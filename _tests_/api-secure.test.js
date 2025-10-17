@@ -9,7 +9,7 @@ process.env.SECRET_KEY_DB_ENCRYPTION = 'clave-secreta-aes-256-muy-larga-y-fuerte
 const request = require('supertest');
 
 // Mock de middlewares de seguridad
-jest.mock('../api/authMiddleware', () => ({
+jest.mock('../authMiddleware', () => ({
   checkJwt: (req, res, next) => {
     req.auth = { email: 'secure.test@example.com', sub: 'secure.test@example.com', scope: ['admin', 'write:config'] };
     next();
@@ -19,7 +19,7 @@ jest.mock('../api/authMiddleware', () => ({
 }));
 
 // Mock cifrado simple
-jest.mock('../api/encryptionUtils', () => {
+jest.mock('../encryptionUtils', () => {
   function enc(s, key) { return Buffer.from(`${s}::${key}`).toString('base64'); }
   function dec(t, key) {
     const raw = Buffer.from(t, 'base64').toString('utf8');
@@ -28,7 +28,7 @@ jest.mock('../api/encryptionUtils', () => {
   return { encrypt: enc, decrypt: dec };
 });
 
-const app = require('../api/server');
+const app = require('../server');
 
 describe('Clima API segura', () => {
   test('GET /api/clima/publico responde 200', async () => {
