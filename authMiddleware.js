@@ -37,7 +37,6 @@ function checkScopes(requiredScopes) {
 }
 
 
-// 4. MIDDLEWARE DE LOG DE AUDITORÍA (MONITOREO)
 function logAudit(req, res, next) {
     const userId = req.auth ? req.auth.sub : 'ANONIMO';
     console.log(`[AUDIT LOG] Usuario: ${userId} | Método: ${req.method} | Ruta: ${req.originalUrl}`);
